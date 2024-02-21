@@ -1,0 +1,67 @@
+﻿@page "/tareas/details/{Id:int}"
+@rendermode InteractiveAuto
+
+<PageTitle>
+    Tarea @Id
+</PageTitle>
+
+<div class="d-flex">
+
+    <h1 class="flex-grow-1">
+        <a href="/tareas" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i>            
+        </a>
+        <i class="bi bi-list-task"></i>
+        Tarea @Id
+    </h1>
+
+    <div>
+        <a href="@($"/tareas/edit/{Id}")" class="btn btn-primary">
+            <i class="bi bi-pencil-square"></i>
+            Editar
+        </a>
+    </div>
+
+</div>
+
+<hr />
+
+@if (tarea is null)
+{
+    <p>
+        <i class="bi bi-cloud-arrow-down"></i>
+        Carregando...
+    </p>
+}
+else
+{
+    <ul class="list-group">
+        
+        <li class="list-group-item">
+            @tarea.Descripcion
+        </li>
+
+
+        <li class="list-group-item">
+            @tarea.HombreClave - @tarea.Telefono
+        </li>
+
+
+        <li class="list-group-item">
+            @tarea.Inicio.ToShortDateString() ás @tarea.Fim.ToShortDateString()
+        </li>
+
+    </ul>
+}
+
+@code {
+    Tarea? tarea;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        tarea = await _tareasService.GetAsync(Id);
+    }
+}

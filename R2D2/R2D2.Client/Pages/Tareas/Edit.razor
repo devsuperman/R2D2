@@ -1,0 +1,104 @@
+﻿@page "/tareas/edit/{Id:int}"
+@rendermode InteractiveAuto
+
+<PageTitle>
+    Editar Tarea @Id
+</PageTitle>
+
+<h1>
+    <i class="bi bi-list-task"></i>
+    Editar Tarea @Id
+</h1>
+
+<hr />
+
+@if (Tarea is null)
+{
+    <p>
+        <i class="bi bi-cloud-arrow-down"></i>
+        Carregando...
+    </p>
+}
+else
+{
+    <EditForm method="post" Model="Tarea" OnValidSubmit="UpdateTarea" FormName="edit" Enhance>
+
+        <ValidationSummary />
+        <DataAnnotationsValidator />
+
+        <input type="hidden" name="Tarea.Id" value="@Id" />
+
+        <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripcion</label>
+        <InputText id="descripcion" @bind-Value="Tarea.Descripcion" class="form-control" />
+        <ValidationMessage For="() => Tarea.Descripcion" class="text-danger" />
+    </div>
+
+
+    <div class="mb-3">
+        <label for="hombreClave" class="form-label">Hombre Clave</label>
+        <InputText id="hombreClave" @bind-Value="Tarea.HombreClave" class="form-control" />
+        <ValidationMessage For="() => Tarea.HombreClave" class="text-danger" />
+    </div>
+
+
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <InputText id="telefono" @bind-Value="Tarea.Telefono" class="form-control" />
+        <ValidationMessage For="() => Tarea.Telefono" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label for="inicio" class="form-label">Início</label>
+        <InputDate id="inicio" @bind-Value="Tarea.Inicio" class="form-control" />
+        <ValidationMessage For="() => Tarea.Inicio" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label for="fim" class="form-label">Fim</label>
+        <InputDate id="fim" @bind-Value="Tarea.Fim" class="form-control" />
+        <ValidationMessage For="() => Tarea.Fim" class="text-danger" />
+    </div>
+
+        <div class="d-flex justify-content-end">
+
+            <a href="/tareas" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Voltar
+            </a>
+
+            <button type="submit" class="btn btn-primary ms-2">
+                <i class="bi bi-check-circle"></i>
+                Salvar Tarea
+            </button>
+        </div>
+
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    [SupplyParameterFromForm]
+    public Tarea? Tarea { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Tarea ??= await _tareasService.GetAsync(Id);
+    }
+
+    public async Task UpdateTarea()
+    {
+        var teste = await _tareasService.UpdateAsync(Tarea);
+        _navigation.NavigateTo("/tareas");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await _js.InvokeVoidAsync("masks");
+        }
+    }
+}

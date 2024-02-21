@@ -1,0 +1,52 @@
+﻿@page "/tareas"
+@rendermode InteractiveAuto
+@attribute [StreamRendering(true)]
+
+<PageTitle>Tareas</PageTitle>
+
+<div class="d-flex">
+
+    <h1 class="flex-grow-1">
+        <i class="bi bi-list-task"></i>
+        Tareas
+    </h1>
+
+    <div>
+        <a class="btn btn-primary" href="tareas/create">
+            <i class="bi bi-plus"></i>
+            Nova Tarea
+        </a>
+    </div>
+
+</div>
+
+<hr />
+
+@if (Tareas is not null)
+{
+    <div class="list-group">
+
+        @foreach (var tarea in Tareas)
+        {
+            <a class="list-group-item list-group-item-action" href="tareas/details/@tarea.Id">
+                @tarea.Descripcion
+            </a>
+        }
+
+    </div>
+}
+else
+{
+    <p>Carregando...</p>
+}
+
+
+@code {
+    List<Tarea>? Tareas = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        Tareas =  await _tareasService.GetAllAsync();
+    }
+}
