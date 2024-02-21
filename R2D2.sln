@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R2D2", "R2D2\R2D2\R2D2.csproj", "{20D0D0BA-39FE-45D1-9C97-54E77852CBCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R2D2", "R2D2\R2D2\R2D2.csproj", "{20D0D0BA-39FE-45D1-9C97-54E77852CBCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R2D2.Client", "R2D2\R2D2.Client\R2D2.Client.csproj", "{25218239-E891-4EB6-A59B-906C8AD7986B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R2D2.Client", "R2D2\R2D2.Client\R2D2.Client.csproj", "{25218239-E891-4EB6-A59B-906C8AD7986B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{099F395A-89D2-4225-83A8-61204AB3E3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZDominio", "Dominio\ZDominio.csproj", "{099F395A-89D2-4225-83A8-61204AB3E3AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
