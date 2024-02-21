@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R2D2", "R2D2\R2D2\R2D2.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R2D2.Client", "R2D2\R2D2.Client\R2D2.Client.csproj", "{25218239-E891-4EB6-A59B-906C8AD7986B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZDominio", "Dominio\ZDominio.csproj", "{099F395A-89D2-4225-83A8-61204AB3E3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio\Dominio.csproj", "{E53B1244-519D-4F22-A853-A039DB1F3BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{25218239-E891-4EB6-A59B-906C8AD7986B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25218239-E891-4EB6-A59B-906C8AD7986B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25218239-E891-4EB6-A59B-906C8AD7986B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{099F395A-89D2-4225-83A8-61204AB3E3AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{099F395A-89D2-4225-83A8-61204AB3E3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{099F395A-89D2-4225-83A8-61204AB3E3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{099F395A-89D2-4225-83A8-61204AB3E3AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E53B1244-519D-4F22-A853-A039DB1F3BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E53B1244-519D-4F22-A853-A039DB1F3BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E53B1244-519D-4F22-A853-A039DB1F3BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E53B1244-519D-4F22-A853-A039DB1F3BA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
