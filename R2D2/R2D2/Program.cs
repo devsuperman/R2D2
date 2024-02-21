@@ -12,7 +12,6 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<Contexto>(a => a.UseSqlServer(builder.Configuration.GetConnectionString("db")));
 builder.Services.AddScoped<ITareasRepository, TareasRepository>();
 
 builder.Services.AddScoped(http => new HttpClient
@@ -20,6 +19,18 @@ builder.Services.AddScoped(http => new HttpClient
     BaseAddress = new Uri(builder.Configuration.GetSection("BaseAddress").Value!)
 });
 
+builder.Services.AddDbContext<Contexto>(options =>
+    options.UseNpgsql(ConnectionHelper.GetConnectionString(builder.Configuration)));
+
+var portVar = Environment.GetEnvironmentVariable("PORT");
+
+if (portVar is { Length: > 0 } && int.TryParse(portVar, out int port))
+{
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(port);
+    });
+}
 
 var app = builder.Build();
 
@@ -32,6 +43,9 @@ else
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     app.UseHsts();
 }
+
+var scope = app.Services.CreateScope();
+await DataHelper.ManageDataAsync(scope.ServiceProvider);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
